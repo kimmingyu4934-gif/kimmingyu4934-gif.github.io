@@ -1,6 +1,295 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Creative Space</title>
+    <style>
+        /* 기본 스타일 리셋 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
 
-  <body>
-    hello!
-  </body>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        /* 네비게이션 바 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #333;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* 공통 섹션 스타일 */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 홈 섹션 (Hero) */
+        #home {
+            text-align: center;
+            padding-top: 150px;
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        #home h1 span {
+            color: #007bff;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* 소개 섹션 */
+        #about .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background-color: #e9ecef;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* 포트폴리오 섹션 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-weight: bold;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: #212529;
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            #home h1 { font-size: 2.5rem; }
+            #about .about-content { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* 심플함을 위해 모바일 메뉴는 생략 */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo">PORTFOLIO.</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Work</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="home">
+        <h1>안녕하세요, <span>홍길동</span>입니다.</h1>
+        <p>가치를 만들어내는 프론트엔드 개발자이자 디자이너입니다.</p>
+        <div>
+            <a href="#projects" class="cta-btn">내 작업 보기</a>
+        </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: #e0e0e0;">
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>문제를 해결하는 것에 즐거움을 느낍니다.</h3>
+                <p>사용자 경험을 최우선으로 생각하며, 깔끔하고 유지보수하기 좋은 코드를 작성하기 위해 노력합니다. 새로운 기술을 배우고 적용하는 것을 좋아합니다.</p>
+            </div>
+            <div>
+                <h3>My Skills</h3>
+                <div class="skills">
+                    <span class="skill-tag">HTML5 / CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Git</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: #e0e0e0;">
+
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-img">Project 1 Image</div>
+                <div class="project-info">
+                    <h3>멋진 웹 애플리케이션</h3>
+                    <p>React와 Node.js를 활용하여 만든 실시간 데이터 대시보드 프로젝트입니다.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">Project 2 Image</div>
+                <div class="project-info">
+                    <h3>이커머스 플랫폼 디자인</h3>
+                    <p>사용자 편의성을 극대화한 모바일 쇼핑몰 UI/UX 가이드라인 작업입니다.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">Project 3 Image</div>
+                <div class="project-info">
+                    <h3>기업 소개 랜딩 페이지</h3>
+                    <p>반응형 웹 기술을 적용하여 모든 기기에서 최적화된 브랜드 페이지입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 홍길동. All rights reserved.</p>
+        <p style="color: #888; font-size: 0.8rem; margin-top: 10px;">Contact: email@example.com</p>
+    </footer>
+
+</body>
 </html>
